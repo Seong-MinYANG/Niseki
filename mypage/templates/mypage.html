@@ -164,7 +164,7 @@
             margin-bottom: 10px;
         }
 
-        #pet-img {
+        #image {
             border-radius: 10px;
             font-size: 15px;
             border: solid #fa6650 2px;
@@ -190,7 +190,7 @@
             margin-bottom: 8px;
         }
 
-        #comment {
+        #desc {
             border-radius: 10px;
             font-size: 15px;
             border: solid #fa6650 2px;
@@ -198,7 +198,7 @@
             height: 120px;
         }
 
-        #link {
+        #url {
             border-radius: 10px;
             font-size: 15px;
             border: solid #fa6650 2px;
@@ -395,68 +395,6 @@
             transition: 0.5s;
         }
 
-        /* 등록 팝업*/
-        .background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background-color: rgba(0, 0, 0, 0.3);
-            z-index: 1000;
-            z-index: -1;
-            opacity: 0;
-        }
-
-        .show {
-            opacity: 1;
-            z-index: 1000;
-            transition: all 0.5s;
-        }
-
-        .window {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-
-        .popup {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #ffffff;
-            box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);
-            width: 400px;
-            height: 350px;
-            transform: translate(-50%, -40%);
-        }
-
-        .show .popup {
-            transform: translate(-50%, -50%);
-            transition: all 0.5s;
-        }
-
-        .popup-header {
-            margin: 10px;
-            text-align: left;
-        }
-
-        .popup-title {
-            display: inline-block;
-            margin: 25px auto 15px 20px;
-            font-size: 20px;
-        }
-
-        .popup-body {
-            margin: 60px;
-            text-align: center;
-        }
-
-        .popup-footer {
-            margin-top: 22px;
-            text-align: center;
-        }
 
         .done-btn {
             border-radius: 20px;
@@ -472,7 +410,6 @@
 
 <body>
 <div class="main">
-
         <div class="main-page">
             <div class="page-gap">
                 <div class="header">
@@ -509,16 +446,16 @@
                                 <span>내 새끼 자랑하기</span>
                             </button>
                         </div>
-                        <form action="/register" method="post">
+                        <form action="/mypage" method="post">
                             <div class="mypost" id="post-box">
                                 <div class="must">
                                     <h5>필수 등록 사항</h5>
                                     <hr>
                                     <div class="must-contents">
                                         <h6>분류</h6>
-                                        <div class="input-group mb-3">
-                                            <select class="form-select" type=text id="categories" required>
-                                                <option selected>-- 선택하기 --</option>
+                                        <div class="col-md-6 mb-3">
+                                            <select class="form-select" type=text id="categories"
+                                                    placeholder="-- 선택하기 --" value="" name="categories" required>
                                                 <option value="강아지">강아지</option>
                                                 <option value="고양이">고양이</option>
                                                 <option value="기타">기타</option>
@@ -527,7 +464,7 @@
                                         <div class="mypicture">
                                             <h6>내 새끼 사진</h6>
                                             <input id="image" type="file" class="form-control"
-                                                   placeholder="name_example.jpg" required>
+                                                   name="filename" placeholder="이미지를 첨부해주세요" value="이미지 첨부" required>
                                         </div>
                                     </div>
                                 </div>
@@ -535,65 +472,52 @@
                                     <h5 style="margin-top: 55px">선택 등록 사항</h5>
                                     <hr>
                                     <div class="choice-contents">
-                                        <div class="form-floating mb-3">
-                                            <input id="name" type="text" class="form-control" placeholder="textarea"
-                                                   required>
+                                        <div class="col-md-4 mb-10">
                                             <label>내 새끼 이름</label>
+                                            <input id="name" type="text" class="form-control"
+                                                   placeholder="내 새끼 이름을 입력해주세요" name="name" value="" required>
                                             <br/>
-                                            <div class="input-group mb-3">
-                                                <select class="form-select" id="age" required>
-                                                    <option selected>-- 나이 --</option>
-                                                    <option value="1">1살</option>
-                                                    <option value="2">2살</option>
-                                                    <option value="3">3살</option>
-                                                    <option value="4">4살</option>
-                                                    <option value="5">5살</option>
-                                                    <option value="6">6살</option>
-                                                    <option value="7">7살</option>
-                                                    <option value="8">8살</option>
-                                                    <option value="9">9살</option>
-                                                    <option value="10">10살</option>
-                                                    <option value="11">11살</option>
-                                                    <option value="12">12살</option>
-                                                    <option value="13">13살</option>
-                                                    <option value="14">14살</option>
-                                                    <option value="15">15살</option>
-                                                    <option value="15">16살</option>
-                                                    <option value="15">17살</option>
-                                                    <option value="15">18살</option>
-                                                    <option value="15">19살</option>
-                                                    <option value="16">20살 이상</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-floating">
-                                <textarea id="comment" class="form-control"
-                                          placeholder="Leave a comment here" required></textarea>
-                                                <label>사진 설명</label>
-                                            </div>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <select class="form-select" id="age" type="" name="age" required>
+                                                <option selected>-- 나이 --</option>
+                                                <option value="1">1살</option>
+                                                <option value="2">2살</option>
+                                                <option value="3">3살</option>
+                                                <option value="4">4살</option>
+                                                <option value="5">5살</option>
+                                                <option value="6">6살</option>
+                                                <option value="7">7살</option>
+                                                <option value="8">8살</option>
+                                                <option value="9">9살</option>
+                                                <option value="10">10살</option>
+                                                <option value="11">11살</option>
+                                                <option value="12">12살</option>
+                                                <option value="13">13살</option>
+                                                <option value="14">14살</option>
+                                                <option value="15">15살</option>
+                                                <option value="15">16살</option>
+                                                <option value="15">17살</option>
+                                                <option value="15">18살</option>
+                                                <option value="15">19살</option>
+                                                <option value="16">20살 이상</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-floating">
+                                            <input id="desc" type="text" class="form-control" placeholder="내 새끼 사진을 설명해주세요"
+                                                   name="desc" value="" required>
+                                            <label>사진 설명</label>
+                                        </div>
                                             <br/>
-                                            <div class="form-floating">
-                                            <textarea id="link" class="form-control"
-                                                      placeholder="Leave a comment here" required></textarea>
-                                                <label>내 새끼 더보기 링크</label>
-                                            </div>
+                                        <div class="form-floating">
+                                            <input id="url" class="form-control" type="url"
+                                                      placeholder="Leave a comment here" name="url" required>
+                                            <label>내 새끼 더보기 링크</label>
                                         </div>
                                         <div class="mybtns">
                                             <button class="regis-btn" id="show" onclick="done()">
-                                                <input type="submit" value="등록" class="done-btn" id="submit-button">
+                                                <input type="submit" value="등록 완료" class="done-btn" id="submit-button">
                                             </button>
-
-                                            <script>
-                                                function show() {
-                                                    document.querySelector(".background").className = "background show";
-                                                }
-
-                                                function close() {
-                                                    document.querySelector(".background").className = "background";
-                                                }
-
-                                                document.querySelector("#show").addEventListener("click", show);
-                                                document.querySelector("#close").addEventListener("click", close);
-                                            </script>
                                         </div>
                                     </div>
                                 </div>
@@ -649,48 +573,7 @@
                     </div>
                 </div>
             </div>
-            <div class="background">
-                <div class="window">
-                    <div class="popup">
-                        <div class="popup-header">
-                            <button id="close" type="button" class="btn-close" aria-label="Close"
-                                    style="float: right;"></button>
-                            <span class="popup-title">등록 확인</span>
-                        </div>
-                        <hr>
-                        <div class="popup-body">
-                            <span class="popup-content">정말 등록하시겠습니까?</span>
-                        </div>
-                        <hr>
-                        <div class="popup-footer">
-                            <button class="regis-btn" >
-                                <span>등록하기</span>
-                            </button>
-                            <script>
-                                function show() {
-                                    document.querySelector(".background").className = "background show";
-                                }
-
-                                function close() {
-                                    document.querySelector(".background").className = "background";
-                                }
-
-                                function close2() {
-                                    document.querySelector(".background").className = "background";
-                                }
-
-                                document.querySelector("#show").addEventListener("click", show);
-                                document.querySelector("#close").addEventListener("click", close);
-
-
-                                document.querySelector("#close2").addEventListener("click", close2);
-                            </script>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
-
 </div>
 </div>
 </body>

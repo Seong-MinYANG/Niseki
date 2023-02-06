@@ -2,9 +2,9 @@ from flask import Flask, render_template, request, jsonify
 app = Flask(__name__)
 
 from pymongo import MongoClient
-client = MongoClient('mongodb+srv://test:sparta@cluster0.0ps45en.mongodb.net/?retryWrites=true&w=majority')
+client = MongoClient('mongodb+srv://test:sparta@cluster0.0ps45en.mongodb.net/cluster0?retryWrites=true&w=majority')
 db = client["animals"]
-animals = db["animal"]
+animal = db["animal"]
 
 import requests
 from bs4 import BeautifulSoup
@@ -13,8 +13,9 @@ from bs4 import BeautifulSoup
 def home():
    return render_template('mypage.html')
 
-@app.route("/register", methods=["POST"])
-def register():
+@app.route("/mypage", methods=["POST"])
+def mypage():
+
     animal_data = {
         "age": request.form.get("age"),
         "categories": request.form.get("categories"),
