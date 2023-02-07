@@ -453,18 +453,18 @@
                                     <hr>
                                     <div class="must-contents">
                                         <h6>분류</h6>
-                                        <div class="col-md-6 mb-3">
-                                            <select class="form-select" type=text id="categories"
-                                                    placeholder="-- 선택하기 --" value="" name="categories" required>
-                                                <option value="강아지">강아지</option>
-                                                <option value="고양이">고양이</option>
-                                                <option value="기타">기타</option>
+                                        <div class="input-group mb-3">
+                                            <select class="form-select" type=text id="animal_type"
+                                                    placeholder="-- 선택하기 --" value="" name="animal_type">
+                                                <option value="dogs">dogs</option>
+                                                <option value="cats">cats</option>
+                                                <option value="others">others</option>
                                             </select>
                                         </div>
                                         <div class="mypicture">
                                             <h6>내 새끼 사진</h6>
                                             <input id="image" type="file" class="form-control"
-                                                   name="filename" placeholder="이미지를 첨부해주세요" value="이미지 첨부" required>
+                                                   name="filename" placeholder="이미지를 첨부해주세요" value="이미지 첨부">
                                         </div>
                                     </div>
                                 </div>
@@ -472,14 +472,14 @@
                                     <h5 style="margin-top: 55px">선택 등록 사항</h5>
                                     <hr>
                                     <div class="choice-contents">
-                                        <div class="col-md-4 mb-10">
+                                        <div class="form-floating mb-3">
                                             <label>내 새끼 이름</label>
                                             <input id="name" type="text" class="form-control"
-                                                   placeholder="내 새끼 이름을 입력해주세요" name="name" value="" required>
+                                                   placeholder="내 새끼 이름을 입력해주세요" name="name" value="" >
                                             <br/>
                                         </div>
                                         <div class="input-group mb-3">
-                                            <select class="form-select" id="age" type="" name="age" required>
+                                            <select class="form-select" id="age" type="" name="age" >
                                                 <option selected>-- 나이 --</option>
                                                 <option value="1">1살</option>
                                                 <option value="2">2살</option>
@@ -505,19 +505,17 @@
                                         </div>
                                         <div class="form-floating">
                                             <input id="desc" type="text" class="form-control" placeholder="내 새끼 사진을 설명해주세요"
-                                                   name="desc" value="" required>
+                                                   name="desc" value="" >
                                             <label>사진 설명</label>
                                         </div>
                                             <br/>
                                         <div class="form-floating">
-                                            <input id="url" class="form-control" type="url"
-                                                      placeholder="Leave a comment here" name="url" required>
+                                            <input id="url" class="form-control" type="text"
+                                                      placeholder="Leave a comment here" name="url" >
                                             <label>내 새끼 더보기 링크</label>
                                         </div>
                                         <div class="mybtns">
-                                            <button class="regis-btn" id="show" onclick="done()">
-                                                <input type="submit" value="등록 완료" class="done-btn" id="submit-button">
-                                            </button>
+                                            <button type="submit" value="등록 완료" class="regis-btn" id="show" id="submit">등록</button>
                                         </div>
                                     </div>
                                 </div>

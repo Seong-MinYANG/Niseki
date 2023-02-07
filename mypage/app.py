@@ -8,12 +8,11 @@ animal = db["animal"]
 
 import requests
 from bs4 import BeautifulSoup
-
 @app.route('/')
 def home():
-   return render_template('mypage.html')
+    return render_template('index.html')
 
-@app.route("/mypage", methods=["GET", "POST"])
+@app.route("/index", methods=["GET", "POST"])
 
 def animals_post():
 
@@ -37,7 +36,7 @@ def animals_post():
         collection.insert_one(animal_data)
         return "Animal stored in collection '{}'".format(collection_name)
     else:
-        return render_template("mypage.html")
+        return render_template("index.html")
 
 def determine_collection():
     animal_type = request.form['animal_type']

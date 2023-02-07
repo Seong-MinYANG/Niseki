@@ -396,23 +396,7 @@
             animals_post();
         });
 
-        function animals_post() {
-            let age = $('#age').val()
-            let categories = $('#categories').val()
-            let url = $('#url').val()
-            let desc = $('#desc').val()
-            let name = $('#name').val()
 
-            $.ajax({
-                type: 'POST',
-                url: '/etc',
-                data: {age_give: age, categories_give: categories, url_give: url, desc_give: desc, name_give: name},
-                success: function (response) {
-                    alert(response['msg'])
-                    window.location.reload()
-                }
-            });
-        }
     </script>
 </head>
 
@@ -436,7 +420,7 @@
         </button></span>
     </div>
     <div class="menu_bar" id="menubar">
-        <button class="menu_home">HOME</a></button>
+        <button class="menu_home">HOME</button>
         <button onclick="close_menubar()" type="button" class="menu_regis">등록</button>
     </div>
 
@@ -473,92 +457,64 @@
                 <div class="more">
                     <button onclick="open_box()" type="button">+</button>
                 </div>
-                <div class="mypost" id="post-box">
+                <form action="/index" method="post">
+                    <div class="mypost" id="post-box">
                     <h5>내 새끼 등록하기</h5>
                     <hr/>
                     <h6>분류</h6>
                     <div class="input-group mb-3">
-                        <select class="form-select" id="categories">
+                        <select class="form-select" id="animal_type" name="animal_type" value="">
                             <option selected>-- 선택하기 --</option>
-                            <option value="강아지">강아지</option>
-                            <option value="고양이">고양이</option>
-                            <option value="기타">기타</option>
+                            <option value="dogs">dogs</option>
+                            <option value="cats">cats</option>
+                            <option value="others">others</option>
                         </select>
                     </div>
                     <h6>필수 등록 사항</h6>
-                    <div class="mypicture" class="form-floating mb-3">
-                        <h6>내 새끼 사진</h6>
-                        <input id="pet-img" type="file" class="form-control" placeholder="name_example.jpg">
-                    </div>
                     <hr/>
                     <h6>선택 등록 사항</h6>
                     <div class="form-floating mb-3">
-                        <input id="name" type="text" class="form-control" placeholder="textarea">
+                        <input id="name" type="text" class="form-control" name="name" placeholder="textarea">
                         <label>내 새끼 이름</label>
-                        <br/>
-                        <div class="input-group mb-3">
-                            <select class="form-select" id="age">
-                                <option selected>-- 나이 --</option>
-                                <option value="1">1살</option>
-                                <option value="2">2살</option>
-                                <option value="3">3살</option>
-                                <option value="4">4살</option>
-                                <option value="5">5살</option>
-                                <option value="6">6살</option>
-                                <option value="7">7살</option>
-                                <option value="8">8살</option>
-                                <option value="9">9살</option>
-                                <option value="10">10살</option>
-                                <option value="11">11살</option>
-                                <option value="12">12살</option>
-                                <option value="13">13살</option>
-                                <option value="14">14살</option>
-                                <option value="15">15살</option>
-                                <option value="16">16살 이상</option>
-                            </select>
-                        </div>
-                        <div class="form-floating">
-                            <textarea id="desc" class="form-control" placeholder="Leave a comment here"></textarea>
-                            <label>사진 설명</label>
-                        </div>
-                        <br/>
-                        <div class="form-floating">
-                            <textarea id="url" class="form-control" placeholder="Leave a comment here"></textarea>
-                            <label>내 새끼 더보기 링크</label>
-                        </div>
-                        <br/>
-                        <div class="mybtns">
-                            <button class="regis-btn" id="show">등록</button>
-                            <div class="background">
-                                <div class="window">
-                                    <div class="popup">
-                                        <button onclick="close_box()" type="button" class="btn-close"
-                                                aria-label="Close"></button>
-                                        <h4>정말 등록하시겠습니까? </h4>
-                                        <br/>
-                                        <button onclick="animals_post()" class="popup-btn">등록</button>
-                                    </div>
-                                    <div>
-                                        <div></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <script>
-                                function show() {
-                                    document.querySelector(".background").className = "background show";
-                                }
-
-                                function close() {
-                                    document.querySelector(".background").className = "background";
-                                }
-
-                                document.querySelector("#show").addEventListener("click", show);
-                                document.querySelector("#close").addEventListener("click", close);
-                            </script>
-                            <button onclick="close_box()" type="button" class="regisclose-btn">닫기</button>
-                        </div>
                     </div>
-                </div>
+                    <br/>
+                    <div class="input-group mb-3">
+                        <select class="form-select" id="age" name="age" type="">
+                            <option selected>-- 나이 --</option>
+                            <option value="1">1살</option>
+                            <option value="2">2살</option>
+                            <option value="3">3살</option>
+                            <option value="4">4살</option>
+                            <option value="5">5살</option>
+                            <option value="6">6살</option>
+                            <option value="7">7살</option>
+                            <option value="8">8살</option>
+                            <option value="9">9살</option>
+                            <option value="10">10살</option>
+                            <option value="11">11살</option>
+                            <option value="12">12살</option>
+                            <option value="13">13살</option>
+                            <option value="14">14살</option>
+                            <option value="15">15살</option>
+                            <option value="16">16살 이상</option>
+                        </select>
+                    </div>
+                    <div class="form-floating">
+                        <textarea id="desc" class="form-control" name="desc" placeholder="Leave a comment here"></textarea>
+                        <label>사진 설명</label>
+                    </div>
+                    <br/>
+                    <div class="form-floating">
+                        <textarea id="url" class="form-control" name="url" placeholder="Leave a comment here"></textarea>
+                        <label>내 새끼 더보기 링크</label>
+                    </div>
+                    <br/>
+                    <div class="mybtns">
+                        <button class="regis-btn" id="submit" onclick="animals_post()">등록</button>
+                    </div>
+                    </div>
+                </form>
+
             </div>
         </div>
         <div class="mypets">
