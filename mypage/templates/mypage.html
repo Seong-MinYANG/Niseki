@@ -446,7 +446,7 @@
                                 <span>내 새끼 자랑하기</span>
                             </button>
                         </div>
-                        <form action="/mypage" method="post">
+                        <form action="/mypage" method="post" enctype="multipart/form-data">
                             <div class="mypost" id="post-box">
                                 <div class="must">
                                     <h5>필수 등록 사항</h5>
@@ -464,7 +464,7 @@
                                         <div class="mypicture">
                                             <h6>내 새끼 사진</h6>
                                             <input id="image" type="file" class="form-control"
-                                                   name="filename" placeholder="이미지를 첨부해주세요" value="이미지 첨부">
+                                                   name="image" placeholder="이미지를 첨부해주세요" accept="image/*" value="이미지 첨부">
                                         </div>
                                     </div>
                                 </div>
